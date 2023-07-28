@@ -23,3 +23,18 @@ jobs:
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
+
+  # api-key to git hub: rnd_hwCNcTbOjE4oS6Xm9S9D2NoMnXRW 
+  # service-ID: srv-cj1ja8p8g3ne7u77oj4g
+
+  deploy:
+
+    needs: build
+  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.SERVICE_ID_STUDENT }}
+          api-key: ${{ secrets.RENDER_API_STUDENT }}
